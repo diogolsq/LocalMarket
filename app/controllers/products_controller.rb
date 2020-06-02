@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    redirect_to
+    # redirect_to
   end
 
   def destroy
