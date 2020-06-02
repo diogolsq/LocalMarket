@@ -1,36 +1,30 @@
-<h2><% @product.name(product)%></h2>
-<p><%= @product.price  %></p>
-<p><%= @product.description %></p>
+<h2>Name: <%= @product.name%></h2>
+<p>Price: <%= @product.price  %></p>
+<p>Description: <%= @product.description %></p>
 <%#Stock logic%>
 <% if @product.stock == 0 %>
   <p> sold out <p>
 <% else %>
-  <%= @product.stock %>
+  <p>Stock: <%= @product.stock %></p>
 <% end %>
 <%# stock logic end%>
 
 <%# rating average logic %>
 <% sum_of_ratings = 0 %>
-<% @product.reviews.each do |review| %>
+<% @product.review.each do |review| %>
   <% sum_of_ratings += reviews.rating %>
   <p><%= sum_of_ratings/@product.reviews.count %></p>
 <% end %>
 <%# rating average logic end %>
 
 <% # listing reviews logic %>
-<% @product.reviews.each do |review| %>
+<% @product.review.each do |review| %>
   <% if review.description != "" %>
     <p><%= " #{review.description} #{review.rating} #{review.created_at} " %><p>
+  <% end %>
 <% end %>
 <% # listing reviews logic end %>
 
 
-  <%= link_to "New", new_product_review_path(@product) %>
 
-  <p class="list-group-item">
-      <%= review.content %>
-      <%= link_to "Remove",
-                  review_path(review),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-  </p>
+
