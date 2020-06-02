@@ -1,13 +1,36 @@
-<ul class="list-group">
-  <% @product.reviews.each do |review| %>
-    <li class="list-group-item"><%= review.content %></li>
-  <% end %>
-</ul>
+<h2><% @product.name(product)%></h2>
+<p><%= @product.price  %></p>
+<p><%= @product.description %></p>
+<%#Stock logic%>
+<% if @product.stock == 0 %>
+  <p> sold out <p>
+<% else %>
+  <%= @product.stock %>
+<% end %>
+<%# stock logic end%>
 
-  <li class="list-group-item">
+<%# rating average logic %>
+<% sum_of_ratings = 0 %>
+<% @product.reviews.each do |review| %>
+  <% sum_of_ratings += reviews.rating %>
+  <p><%= sum_of_ratings/@product.reviews.count %></p>
+<% end %>
+<%# rating average logic end %>
+
+<% # listing reviews logic %>
+<% @product.reviews.each do |review| %>
+  <% if review.description != "" %>
+    <p><%= " #{review.description} #{review.rating} #{review.created_at} " %><p>
+<% end %>
+<% # listing reviews logic end %>
+
+
+  <%= link_to "New", new_product_review_path(@product) %>
+
+  <p class="list-group-item">
       <%= review.content %>
       <%= link_to "Remove",
                   review_path(review),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
-  </li>
+  </p>
