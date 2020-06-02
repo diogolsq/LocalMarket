@@ -8,12 +8,19 @@
 
 
 
-<br>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p> teste </p>
+<div class="fixing-the-card">
+  <div class="cards">
+    <% @products.each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), url('<%= cl_image_path product.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <p><%= product.name %><p>
+        </div>
+      <% end %>
+    <% end %>
+      <%= link_to new_product_path, class: "my-2 my-sm-0 ml-2" do%>
+        <div class="card-category add" style="background-size: 25% 17%; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), url(<%= asset_path("plus.png") %>)">
+          <p> Add a drink</p>
+        </div>
+      <% end %>
+  </div>
+</div>
