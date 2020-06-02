@@ -1,7 +1,9 @@
-<%= simple_form_for(@product) do |f| %>
-  <%= f.input :name  %>
-  <%= f.input :decription %>
-  <%= f.input :price %>
-  <%= f.input :stock %>
-  <%= f.sumbit %>
-<% end %>
+<div class="fixing-margin">
+  <%= simple_form_for(@product) do |f| %>
+    <%= f.input :name  %>
+    <%= f.input :decription %>
+    <%= f.input :price %>
+    <%= f.input :stock %>
+    <%= f.sumbit %>
+  <% end %>
+</div>

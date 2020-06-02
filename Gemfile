@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gem that enables us to to the login logout part
 gem 'devise'
+
+# gem to deal with the upload images in the cloud
+gem 'cloudinary', '~> 1.12.0'
