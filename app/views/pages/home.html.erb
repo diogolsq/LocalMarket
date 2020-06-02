@@ -17,13 +17,13 @@
             <p><%= product.name %><p>
           </div> -->
           <div class="card-trip">
-            <%= cl_image_path product.photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill if product.photo.attached?%>
             <div class="card-trip-infos">
               <div>
-                <h2>product.name</h2>
-                <p>product.description</p>
+                <h2><%= product.name %></h2>
+                <p><%= product.description %> </p>
               </div>
-              <h2 class="card-trip-pricing">product.price</h2>
+              <h2 class="card-trip-pricing"><%= product.price %></h2>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
             </div>
           </div>
