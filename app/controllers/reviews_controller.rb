@@ -3,12 +3,14 @@ class ReviewsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @review = Review.new
+    authorize @review
   end
 
  def create
     @review = Review.new(review_params)
     @product = product.find(params[:product_id])
     @review.product = @product
+    authorize @review
     if @review.save
       redirect_to product_path(@product)
     else
@@ -19,7 +21,7 @@ class ReviewsController < ApplicationController
 private
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:description, :rating)
   end
 
 
