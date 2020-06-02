@@ -5,6 +5,6 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :stock, presence: true, numericality: { only_integer: true }
 
-  has_one_attached :photo, presence: true
+  has_one_attached :photo
 end
 
