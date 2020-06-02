@@ -9,6 +9,10 @@
 <% end %>
 <%# stock logic end%>
 
+
+<%# New Review %>
+<%= link_to "New Review", new_product_review_path(@product.id) %>
+
 <%# rating average logic %>
 <% sum_of_ratings = 0 %>
 <% @product.review.each do |review| %>
