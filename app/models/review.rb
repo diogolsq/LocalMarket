@@ -1,6 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :product
   belongs_to :user
-
-  validates :content, presence: true
+  validates :description, presence: true, length: { minimum: 5}
 end
