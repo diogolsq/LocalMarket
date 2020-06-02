@@ -66,3 +66,6 @@ gem 'devise'
 
 # gem to deal with the upload images in the cloud
 gem 'cloudinary', '~> 1.12.0'
+
+# gem to deal with the authorization logic
+gem 'pundit'
