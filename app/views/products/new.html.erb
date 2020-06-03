@@ -1,0 +1,12 @@
+<%= simple_form_for @product do |f| %>
+  <div class="input-color">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :stock %>
+    <%= f.input :price %>
+
+    <%= f.input :photo, as: :file, hint: 'pick a good picture to display your product' %>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
