@@ -27,7 +27,7 @@
 <p> address: <%= @user.address %></p>
 <%# end user info with conditions logic %>
 
-<%# display your products logic %>
+<%# display your purchases logic %>
 <% if current_user == @user %>
   <h2>Your Purchases </h2>
   <hr>
@@ -36,6 +36,7 @@
   <% end %>
 <% end %>
 
+<%# display sellers products logic %>
 <% if @user.seller %>
   <% if current_user == @user %>
     <h2>Your Products </h2>
@@ -46,7 +47,6 @@
     <<h2>All products from this seller</h2>
   <% end %>
   <% @products.each do |product| %>
-    <p><%= product.name %><p>
+    <p><%= link_to "#{product.name}", product_path(product) %><p>
   <% end %>
-
 <% end %>
