@@ -13,3 +13,18 @@
   <p> seller:  <%= @user.seller %></p>
   <% end %>
 </div>
+
+
+<h2>Yours Purchases </h2>
+<hr>
+<% @orders.each do |order| %>
+
+  <p><%= order.status %><p>
+
+<% end %>
+
+
+
+
+<h2>Your Products </h2>
+<hr>
