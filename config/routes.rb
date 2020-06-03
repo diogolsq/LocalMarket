@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ] do
     resources :products, only: [:index, :new, :create, :update, :destroy]
   end
+
+
 end

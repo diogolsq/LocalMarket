@@ -1,0 +1,20 @@
+<%= link_to "go back to products", products_path %>
+
+<div>
+  <h2>Name: <%= @product.name%></h2>
+  <p>Price: <%= @product.price  %></p>
+</div>
+<%# link to seller's profile %>
+
+
+<%# List the products in cart %>
+<% @product = 0 %>
+<% product.each do |item| %>
+  <%= @product += item%>
+<% end %>
+<%# End of listed products  %>
+
+
+
+<p> Resume of the orders</p>
+ <p></p>
