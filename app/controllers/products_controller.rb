@@ -7,11 +7,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @user = User.find(@product.user_id)
   end
 
   def new
     @product = Product.new
-    authorize @product
   end
 
   def create

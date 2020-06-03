@@ -1,0 +1,3 @@
+class OrdersToProductsController < ApplicationController
+
+end
