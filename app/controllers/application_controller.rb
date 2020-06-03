@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :password, :password_confirmation, :photo, :name, :cellphone, :address])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :password, :password_confirmation, :photo, :name, :cellphone, :address, :seller])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :password, :password_confirmation, :photo, :name, :username, :cellphone, :address])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :password, :password_confirmation, :photo, :name, :username, :cellphone, :address, :seller])
   end
 
   # Pundit: white-list approach.
