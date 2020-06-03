@@ -8,8 +8,9 @@ class ReviewsController < ApplicationController
 
  def create
     @review = Review.new(review_params)
-    @product = product.find(params[:product_id])
+    @product = Product.find(params[:product_id])
     @review.product = @product
+    @review.user = current_user
     authorize @review
     if @review.save
       redirect_to product_path(@product)
