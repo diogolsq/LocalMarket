@@ -30,8 +30,10 @@
 <h2>Your Products </h2>
 <hr>
 <% @products.each do |product| %>
+  <%= link_to product_path(product), class: "nav-link" do %>
+    <p><%= product.name %><p>
+  <% end %>
 
-  <p><%= product.name %><p>
 
 <% end %>
 
