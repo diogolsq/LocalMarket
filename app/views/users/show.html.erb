@@ -1,0 +1,15 @@
+<h1>User Profile</h1>
+
+<p>Welcome back, <%= @user.name.capitalize %></p>
+
+<div class="description-card">
+  <h2>Description</h2>
+  <%= link_to edit_user_registration_path, class: "nav-link" do %>
+    <i class="fas fa-user-edit"></i>
+  <p> name : <%= @user.name %></p>
+  <p> username :<%= @user.username %></p>
+  <p> cellphone: <%= @user.cellphone %></p>
+  <p> address: <%= @user.address %></p>
+  <p> seller:  <%= @user.seller %></p>
+  <% end %>
+</div>
