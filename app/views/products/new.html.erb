@@ -3,7 +3,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :stock %>
-    <%= f.input :price %>
+    <%= f.input :price, hint: 'in dollars'%>
 
     <%= f.input :photo, as: :file, hint: 'pick a good picture to display your product' %>
     <%= f.submit class: 'btn btn-primary' %>
