@@ -22,7 +22,11 @@
 <% @product.review.each do |review| %>
   <% sum_of_ratings += review.rating %>
 <% end %>
-<p>Average Rating: <%= sum_of_ratings/@product.review.count %></p>
+<% if @product.review.count == 0 %>
+  <p> This product has not been reviewed <p>
+<% else %>
+  <p>Average Rating: <%= "#{sum_of_ratings/@product.review.count} Reviews made: #{@product.review.count}" %></p>
+<% end %>
 <%# rating average logic end %>
 
 <% # listing reviews logic %>
