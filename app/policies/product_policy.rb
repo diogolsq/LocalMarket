@@ -23,14 +23,14 @@ class ProductPolicy < ApplicationPolicy
   def create?
     # Who can create a restaurant?
     # anyone!
-    true
+    user_is_seller?
   end
 
   def update?
     # The same logic as destroy
     # Who can update a restaurant?
     # The owner
-    user_is_seller?
+    user_is_seller? && record.user == user
   end
 
   def destroy?
@@ -42,7 +42,7 @@ class ProductPolicy < ApplicationPolicy
   private
 
   def user_is_seller?
-    current_user.seller
+    user.seller
   end
 
   # def user_is_admin?

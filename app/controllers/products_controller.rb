@@ -17,8 +17,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    authorize @product
     @product.user_id = current_user.id
+    authorize @product
     if @product.save!
       redirect_to product_path(@product)
     else
