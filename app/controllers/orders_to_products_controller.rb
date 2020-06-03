@@ -1,8 +1,7 @@
 class OrdersToProductsController < ApplicationController
 
-  def show?
-    @orders = Orders.all
-    authorize @users
+  def show
+    @orders = @OrdersToProducts(params[:id])
   end
 
 end
