@@ -1,43 +1,53 @@
 <h1>User Profile</h1>
 
-<p>Welcome back, <%= @user.name.capitalize %></p>
+<%# display WELCOME BACK only if you are the owner of the page %>
+<% if current_user == @user %>
+  <p>Welcome back, <%= @user.name.capitalize %></p>
+<% end %>
 
-<div class="description-card">
-  <h2>Description</h2>
+<%# display SELLER only if the user is a seller %>
+<% if @user.seller %>
+  <p>Seller</p>
+<% end %>
+
+<%# user info with conditions %>
+<% if current_user == @user %>
+  <h1>Your Information</h1>
   <%= link_to edit_user_registration_path, class: "nav-link" do %>
     <i class="fas fa-user-edit"></i>
   <% end %>
-  <p> name : <%= @user.name %></p>
-  <p> username :<%= @user.username %></p>
-  <p> cellphone: <%= @user.cellphone %></p>
-  <p> address: <%= @user.address %></p>
-  <p> seller:  <%= @user.seller %></p>
+<% else %>
+  <p> Seller Information <p>
+<% end %>
+    
+<p> name : <%= @user.name %></p>
+<% if current_user == @user %>
+   <p> username :<%= @user.username %></p>
+   <p> cellphone: <%= @user.cellphone %></p>
+<% end %>
+<p> address: <%= @user.address %></p>
+<%# end user info with conditions logic %>
 
-</div>
-
-
-<h2>Yours Purchases </h2>
-<hr>
-<% @orders.each do |order| %>
-
-  <p><%= order.status %><p>
-
+<%# display your purchases logic %>
+<% if current_user == @user %>
+  <h2>Your Purchases </h2>
+  <hr>
+  <% @orders.each do |order| %>
+    <p><%= order.status %><p>
+  <% end %>
 <% end %>
 
-
-
-
-<h2>Your Products </h2>
-<hr>
-<% @products.each do |product| %>
-  <%= link_to product_path(product), class: "nav-link" do %>
-    <p><%= product.name %><p>
+<%# display sellers products logic %>
+<% if @user.seller %>
+  <% if current_user == @user %>
+    <h2>Your Products </h2>
+    <%= link_to new_product_path(@user), class: "nav-link" do %>
+      <div class='btn btn-danger'> Add Products </div>
+    <% end %>
+  <% else %>
+    <h2>All products from this seller</h2>
   <% end %>
-
-
+  <% @products.each do |product| %>
+    <p><%= link_to "#{product.name}", product_path(product) %><p>
+  <% end %>
 <% end %>
-
-<%= link_to new_product_path(@user), class: "nav-link" do %>
-    <div class='btn btn-danger'> Add Products </div>
-    <p> show only for sellers </p>
-  <% end %>
