@@ -14,7 +14,7 @@
       <% @products.each do |product| %>
         <%= link_to product_path(product) do %>
           <div class="card-trip">
-            
+
 
             <% if product.photo.attached? %>
               <%= cl_image_tag product.photo.key, height: 160, width: 240, crop: :fill if product.photo.attached? %>
@@ -31,8 +31,8 @@
 
                 <!-- <p><%= product.user_id %> </p> -->
               </div>
-              <h2 class="card-trip-pricing"><%= product.price %></h2>
-              <%= cl_image_tag product.user.photo.key, class: 'card-trip-user avatar-bordered' %>              
+              <h2 class="card-trip-pricing"> $ <%= product.price %></h2>
+              <%= cl_image_tag product.user.photo.key, class: 'card-trip-user avatar-bordered' %>
             </div>
           </div>
 

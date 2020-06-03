@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -45,9 +44,7 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
-
   def product_params
-    params.require(:product).permit(:name, :description, :stock, :photo)
+    params.require(:product).permit(:name, :description, :stock, :price, :photo)
   end
-
 end
