@@ -69,3 +69,6 @@ gem 'cloudinary', '~> 1.12.0'
 
 # gem to deal with the authorization logic
 gem 'pundit'
+
+# gem to discover the latitude and longitude based on the address atribute.
+gem 'geocoder'

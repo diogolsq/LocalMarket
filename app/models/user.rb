@@ -9,4 +9,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+
+  # we will let the geocode access our address and convert it to latitude and longitude.
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
