@@ -20,6 +20,12 @@
       <%= f.input :username %>
       <%= f.input :address %>
       <%= f.input :cellphone %>
+      <p>are you going to sell products in our plataform?</p>
+      <%= f.radio_button :seller, 'true' %>
+      <%= f.label :seller, 'yes/maybe', value:'true' %>
+      <%= f.radio_button :seller, 'false' %>
+      <%= f.label :seller, 'no', value:'false' %>
+
       <%= f.input :photo, as: :file %>
 
     <div class="form-actions">
