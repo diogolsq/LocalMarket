@@ -12,12 +12,14 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(product_params)
     authorize @product
-    if @product.save
+    @product.user_id = current_user.id
+    if @product.save!
       redirect_to product_path(@product)
     else
       render :new
@@ -45,7 +47,7 @@ class ProductsController < ApplicationController
 
 
   def product_params
-    params.require(:product).permit( :name, :description, :stock)
+    params.require(:product).permit(:name, :description, :stock, :photo)
   end
 
 end

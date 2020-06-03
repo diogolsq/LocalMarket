@@ -6,6 +6,14 @@ class ProductPolicy < ApplicationPolicy
 
   end
 
+  def new?
+      # Who can see a restaurant?
+      # Also anyone
+      #user_is_seller? # real script
+      true
+  end
+
+
   def show?
       # Who can see a restaurant?
       # Also anyone
