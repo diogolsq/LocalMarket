@@ -13,18 +13,26 @@
     <% if @products %>
       <% @products.each do |product| %>
         <%= link_to product_path(product) do %>
-         <!--  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), url('<%= cl_image_path product.photo.key, height: 300, width: 400, crop: :fill %>')">
-            <p><%= product.name %><p>
-          </div> -->
           <div class="card-trip">
-            <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill if product.photo.attached?%>
+            
+
+            <% if product.photo.attached? %>
+              <%= cl_image_tag product.photo.key, height: 160, width: 240, crop: :fill if product.photo.attached? %>
+            <% else %>
+              <%= image_tag "logo.png", height: 160, width: 240, crop: :fill, class: 'empty' %>
+
+            <% end %>
+
             <div class="card-trip-infos">
               <div>
                 <h2><%= product.name %></h2>
                 <p><%= product.description %> </p>
+
+
+                <!-- <p><%= product.user_id %> </p> -->
               </div>
               <h2 class="card-trip-pricing"><%= product.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <%= cl_image_tag product.user.photo.key, class: 'card-trip-user avatar-bordered' %>              
             </div>
           </div>
 

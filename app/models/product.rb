@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  belongs_to :user
+
   has_many :order, through: :ordersToProduct
   has_many :review, dependent: :destroy
   validates :name, presence: true
