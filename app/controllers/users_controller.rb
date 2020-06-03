@@ -2,9 +2,14 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show]
 
   def show
-  authorize @user
-  @orders = Order.where(user_id: @user.id)
-  @products = Product.where(user_id: @user.id)
+    authorize @user
+    @orders = Order.where(user_id: @user.id)
+    @products = Product.where(user_id: @user.id)
+
+    @marker = {
+      lat: @user.latitude,
+      lng: @user.longitude
+    }
   end
 
   private
