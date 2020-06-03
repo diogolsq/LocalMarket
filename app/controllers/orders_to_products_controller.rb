@@ -1,7 +1,7 @@
 class OrdersToProductsController < ApplicationController
 
   def show
-    @orders = @OrdersToProducts(params[:id])
+    @orderstoproducts = @OrdersToProducts.find(params[:id])
   end
 
 end
