@@ -6,10 +6,10 @@ class UsersController < ApplicationController
     @orders = Order.where(user_id: @user.id)
     @products = Product.where(user_id: @user.id)
 
-    @marker = {
+    @markers = [{
       lat: @user.latitude,
       lng: @user.longitude
-    }
+    }]
   end
 
   private
