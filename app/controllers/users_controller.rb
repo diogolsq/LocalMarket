@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
   authorize @user
   @orders = Order.where(user_id: @user.id)
+  @products = Product.where(user_id: @user.id)
   end
 
   private
