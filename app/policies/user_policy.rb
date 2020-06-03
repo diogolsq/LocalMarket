@@ -6,6 +6,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    record == user
+    if record.seller || record == user
+      return true
+    else
+      return false
+    end
   end
 end
