@@ -44,7 +44,7 @@
       <div class='btn btn-danger'> Add Products </div>
     <% end %>
   <% else %>
-    <<h2>All products from this seller</h2>
+    <h2>All products from this seller</h2>
   <% end %>
   <% @products.each do |product| %>
     <p><%= link_to "#{product.name}", product_path(product) %><p>
