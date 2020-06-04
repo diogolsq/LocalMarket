@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :user
 
-  has_many :order, through: :ordersToProduct
-  has_many :review, dependent: :destroy
+  has_many :orders, through: :ordersToProduct
+  has_many :reviews, dependent: :destroy
   validates :name, presence: true
   validates :description, presence: true
   validates :stock, presence: true, numericality: { only_integer: true }
