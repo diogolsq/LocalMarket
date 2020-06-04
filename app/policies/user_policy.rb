@@ -12,4 +12,9 @@ class UserPolicy < ApplicationPolicy
       return false
     end
   end
+
+  def update?
+    record == @user
+  end
+
 end

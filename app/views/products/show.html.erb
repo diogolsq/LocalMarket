@@ -10,7 +10,13 @@
       <%# link to seller's profile %>
       <p> Seller: <%= link_to "#{@user.name}", user_path(@user) %>
       <h2>Name: <%= @product.name%></h2>
+      <% if policy(@user).update? %>
+        <%= link_to edit_product_path(@product) do%>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      <% end %>
       <%# rating average logic %>
+
       <% sum_of_ratings = 0 %>
       <% @product.reviews.each do |review| %>
         <% sum_of_ratings += review.rating %>
