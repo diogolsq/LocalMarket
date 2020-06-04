@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create ]
   end
   resources :users, only: [ :show ]
+
   resources :orders_to_products, only: [:create, :update, :destroy]
+  resources :orders, only: [ :show ]
 
 end

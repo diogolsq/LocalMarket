@@ -1,7 +1,5 @@
 class OrdersToProductsController < ApplicationController
-
   def create
-
     open_order = current_user.orders.find_by(status: "open")
     open_order ||= current_user.orders.create(status: "open")
 
