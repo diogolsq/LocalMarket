@@ -1,39 +1,46 @@
 <div class="fixing-margin">
   <div class="form-centralize">
     <h2>My Cart</h2>
-    <div class="form-borders">
+    <div class="form-borders-cart">
       <!-- #<ActiveRecord::Relation [#<OrdersToProduct id: 1, quantity: 10, product_id: 7, order_id: 1, unit_price: 15, created_at: "2020-06-04 20:02:46", updated_at: "2020-06-04 20:02:46">, #<OrdersToProduct id: 2, quantity: 10, product_id: 5, order_id: 1, unit_price: 2, created_at: "2020-06-04 20:04:03", updated_at: "2020-06-04 20:04:03">]> -->
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Unit Price</th>
-            <th scope="col">Partial</th>
-          </tr>
-        </thead>
-          <tbody>
-            <% sum = 0  %>
-            <% @myproducts.each do |product| %>
-              <tr>
-                <th scope='row'><%= Product.find(product.product_id).name %></th>
-                <td>$ <%=  product.quantity  %></td>
-                <td>$ <%=  product.unit_price %></td>
-                <td> <% sum += (product.quantity) * (product.unit_price) %> $ <%=  (product.quantity) * (product.unit_price) %></td>
-              </tr>
-            <% end %>
-            </tr>
-          </tbody>
-      </table>
-      <p>To pay : $ <%= sum %> </p>
-      <!-- <button name="button" type="submit" class="btn btn-flat">
-        <p Pay
-      </button>
- -->
-    <%= link_to 'Pay', order_path(@order, order: { status: 'bought' }), method: 'PATCH', class: 'btn btn-primary' %>
-    <%=  redirect_to user_path(current_user) unless @order.status = 'open' %>
+      <% if @myproducts %>
 
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Unit Price</th>
+              <th scope="col">Partial</th>
+            </tr>
+
+          </thead>
+            <tbody>
+              <% sum = 0  %>
+              <% @myproducts.each do |product| %>
+                <tr>
+                  <th scope='row'><%= Product.find(product.product_id).name %></th>
+                  <td>$ <%=  product.quantity  %></td>
+                  <td>$ <%=  product.unit_price %></td>
+                  <td> <% sum += (product.quantity) * (product.unit_price) %> $ <%=  (product.quantity) * (product.unit_price) %> <%= link_to orders_to_product_path(product),
+                  method: 'DELETE' do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+        <hr>
+        <p><strong>To pay : $ <%= sum %></strong></p>
+        <!-- <button name="button" type="submit" class="btn btn-flat">
+          <p Pay
+        </button>
+   -->
+      <%= link_to 'Pay', order_path(@order, order: { status: 'bought' }), method: 'PATCH', class: 'btn btn-primary' %>
+      <%=  redirect_to user_path(current_user) unless @order.status = 'open' %>
+    <% end %>
     </div>
   </div>
 </div>

@@ -16,6 +16,10 @@ class OrdersToProductsController < ApplicationController
   end
 
   def destroy
+    @product_in_order = OrdersToProduct.find(params[:id])
+    @product_in_order.destroy
+    redirect_to order_path(@product_in_order.order_id)
+    authorize @product_in_order
   end
 
   private
