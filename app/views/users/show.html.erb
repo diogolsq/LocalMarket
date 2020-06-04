@@ -2,20 +2,72 @@
 
 
 
+
+<div class="user-container col-12" style="background-color: white">
+  <div class="user-details col-12 d-flex">
+
+    <% if current_user == @user %>
+      <div class="profile-avatar col-3">
+        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
+        <%= image_tag "Lewagonlogo.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
+      </div>
+      <div class="user-info col-3">
+
+        <p>Welcome back, <%= @user.name.capitalize %></p>
+        <% if @user.seller %>
+          <p>Seller</p>
+        <% end %>
+        <h1>Your Information</h1>
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fas fa-user-edit"></i>
+        <% end %>
+        <p> name : <%= @user.name %></p>
+        <p> username :<%= @user.username %></p>
+        <p> cellphone: <%= @user.cellphone %></p>
+
+      </div>
+      <div class="user-map col-6">
+        <div id="map"
+         style="width: 100%; height: 100%;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+    <% end %>
+
+    <% if current_user != @user %>
+      <div class="profile-avatar col-4">
+        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
+        <%= image_tag "Lewagonlogo.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
+      </div>
+      <div class="user-map col-8">
+        <div id="map"
+         style="width: 100%; height: 600px;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <%# display WELCOME BACK only if you are the owner of the page %>
-<% if current_user == @user %>
-  <p>Welcome back, <%= @user.name.capitalize %></p>
-<% end %>
 
 <%# display SELLER only if the user is a seller %>
-<% if @user.seller %>
-  <p>Seller</p>
-<% end %>
+
 
 <%# user info with conditions %>
 <% if current_user == @user %>
