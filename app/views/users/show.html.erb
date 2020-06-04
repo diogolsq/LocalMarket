@@ -1,23 +1,21 @@
-<h1>User Profile</h1>
-
-
 
 
 <div class="user-container col-12" style="background-color: white">
-  <div class="user-details col-12 d-flex">
+  <div class="user-details col-12 d-flex align-items-center">
 
     <% if current_user == @user %>
       <div class="profile-avatar col-3">
         <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
-        <%= image_tag "Lewagonlogo.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
+        <%= image_tag "avatar-default-copy.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
+        <dir><h3><%= @user.name.capitalize %></h3></dir>
       </div>
       <div class="user-info col-3">
 
-        <p>Welcome back, <%= @user.name.capitalize %></p>
+        <h3>Hello, <%= @user.name.capitalize %></h3>
         <% if @user.seller %>
           <p>Seller</p>
         <% end %>
-        <h1>Your Information</h1>
+        <p>Your Information</p>
         <%= link_to edit_user_registration_path, class: "nav-link" do %>
           <i class="fas fa-user-edit"></i>
         <% end %>
