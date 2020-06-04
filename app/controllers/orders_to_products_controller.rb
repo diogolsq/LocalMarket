@@ -5,13 +5,13 @@ class OrdersToProductsController < ApplicationController
     open_order = current_user.orders.find_by(status: "open")
     open_order ||= current_user.orders.create(status: "open")
 
-    new_order = OrdersToProduct.new(orders_to_product_params)
-    new_order.unit_price = new_order.product.price
-    new_order.order = open_order
+    @orders_to_product = OrdersToProduct.new(orders_to_product_params)
+    @orders_to_product.unit_price = @orders_to_product.product.price
+    @orders_to_product.order = open_order
+    authorize @orders_to_product
+    @orders_to_product.save
 
-    new_order.save
-
-    redirect_to new_order.product, notice: "Succesfully added to cart"
+    redirect_to @orders_to_product.product, notice: "Succesfully added to cart"
   end
 
   def update
