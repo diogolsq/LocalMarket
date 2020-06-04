@@ -72,3 +72,4 @@ gem 'pundit'
 
 # gem to discover the latitude and longitude based on the address atribute.
 gem 'geocoder'
+
