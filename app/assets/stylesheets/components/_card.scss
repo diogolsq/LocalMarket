@@ -4,6 +4,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   margin:8px;
+
+}
+.cards a {
+  text-decoration: none;
 }
 
 .card-trip{
@@ -74,3 +78,4 @@
 .card-trip-infos p {
   font-size:12px;
 }
+
