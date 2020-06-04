@@ -31,9 +31,8 @@
         <p Pay
       </button>
  -->
-
-      <p class='btn btn-primary'> pay </p>
-
+    <%= link_to 'Pay', order_path(@order, order: { status: 'bought' }), method: 'PATCH', class: 'btn btn-primary' %>
+    <%=  redirect_to user_path(current_user) unless @order.status = 'open' %>
 
     </div>
   </div>
