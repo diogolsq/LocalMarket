@@ -1,12 +1,12 @@
 class OrdersToProductsController < ApplicationController
 
   def create
-    product = Product.find(params[:product_id])
 
     open_order = current_user.orders.find_by(status: "open")
     open_order ||= current_user.orders.create(status: "open")
+
     new_order = OrdersToProduct.new(orders_to_product_params)
-    new_order.unit_price = product.price
+    new_order.unit_price = new_order.product.price
     new_order.order = open_order
 
     new_order.save
@@ -23,7 +23,7 @@ class OrdersToProductsController < ApplicationController
   private
 
   def orders_to_product_params
-    params.require(:orders_to_product).permit(:quantity)
+    params.require(:orders_to_product).permit(:quantity, :product_id)
   end
 
 end
