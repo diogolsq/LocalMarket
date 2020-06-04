@@ -1,15 +1,14 @@
-<%= link_to "go back to products", products_path %>
 
 
-
-<div class="product-show-container col-12" style="background-color: white">
+<div class="product-show-container col-12 pt-30" style="background-color: white">
 
   <div class="product-details d-flex col-12">
-    <div class="product-img col-5"> <p><%= cl_image_tag @product.photo.key, height: 240, width: 240, crop: :fill if @product.photo.attached? %></p></div>
+    <div class="product-img col-5">
+      <%= cl_image_tag @product.photo.key, class: "product-image", crop: :fill if @product.photo.attached? %></div>
     <div class="product-info col-7">
       <%# link to seller's profile %>
-      <p> Seller: <%= link_to "#{@user.name}", user_path(@user) %>
-      <h2>Name: <%= @product.name%></h2>
+      <%= link_to "#{@user.name}", user_path(@user), class: "seller-link" %>
+      <h1><%= @product.name%></h1>
       <%# rating average logic %>
       <% sum_of_ratings = 0 %>
       <% @product.reviews.each do |review| %>
@@ -27,6 +26,7 @@
           <% white_stars.times do %>
             <i class="far fa-star"></i>
           <% end %>
+          <%= "(#{@product.reviews.count})" %>
         </p>
       <% end %>
       <%# rating average logic end %>
@@ -41,32 +41,38 @@
       <% # Add to cart logic and form %>
       <%= simple_form_for OrdersToProduct.new do |f| %>
         <%= f.input :product_id, as: :hidden, input_html: {value: @product.id} %>
-        <%= f.input :quantity, collection: (1..10) %>
+        <%= f.input :quantity, collection: (1..10), include_blank: false %>
         <%= f.submit "Add to cart" %>
       <% end %>
       <%# description %>
-      <p>Description: <%= @product.description %></p>
+      <h3>Description:</h3>
+      <p><%= @product.description %></p>
 
     </div>
   </div>
 
-  <div class="reviews-title col-12"> <h2>Reviews:</h2> </div>
+
 
   <div class="reviews-container d-flex col-12">
     <div class="review-rating col-3">
       <%# rating average logic %>
-      <% sum_of_ratings = 0 %>
-      <% @product.reviews.each do |review| %>
-        <% sum_of_ratings += review.rating %>
-      <% end %>
       <% if @product.reviews.count == 0 %>
         <p> This product has not been reviewed <p>
       <% else %>
-        <p>Average Rating: <%= "#{sum_of_ratings/@product.reviews.count} Reviews made: #{@product.reviews.count}" %></p>
+        <p>
+          <% rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% white_stars.times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+          <%= "(#{@product.reviews.count})" %>
+        </p>
       <% end %>
       <%# rating average logic end %>
     </div>
     <div class="reviews-list col-9">
+      <div class="reviews-title col-12"> <h2>Reviews:</h2> </div>
       <%# New Review %>
       <%= link_to "New Review", new_product_review_path(@product.id) %>
       <% # listing reviews logic %>
