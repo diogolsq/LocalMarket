@@ -37,6 +37,14 @@
 <% end %>
 <% # listing reviews logic end %>
 
+<% # Add to cart logic and form %>
+<%= simple_form_for OrdersToProduct.new do |f| %>
+  <%= f.input :product_id, as: :hidden, input_html: {value: @product.id} %>
+  <%= f.input :quantity, collection: (1..10) %>
+  <%= f.submit "Add to cart" %>
+<% end %>
+
+
 
 
 
