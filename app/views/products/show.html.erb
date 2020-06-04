@@ -8,7 +8,7 @@
     <div class="product-info col-7">
       <%# link to seller's profile %>
       <%= link_to "#{@user.name}", user_path(@user), class: "seller-link" %>
-      <h1><%= @product.name%></h1>
+      <h1 class="product-name"><%= @product.name%></h1>
       <%# rating average logic %>
       <% sum_of_ratings = 0 %>
       <% @product.reviews.each do |review| %>
