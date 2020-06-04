@@ -18,7 +18,12 @@
       <% if @product.reviews.count == 0 %>
         <p> This product has not been reviewed <p>
       <% else %>
-        <p>Average Rating: <%= "#{sum_of_ratings/@product.reviews.count} Reviews made: #{@product.reviews.count}" %></p>
+        <% rating = sum_of_ratings/@product.reviews.count %>
+        <p>
+          <% rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </p>
       <% end %>
       <%# rating average logic end %>
       <p>Price: $<%= @product.price  %></p>
