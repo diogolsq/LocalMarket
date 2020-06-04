@@ -13,6 +13,6 @@ class User < ApplicationRecord
   # we will let the geocode access our address and convert it to latitude and longitude.
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  has_many :order, dependent: :destroy
-  has_many :product, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :products, dependent: :destroy
 end

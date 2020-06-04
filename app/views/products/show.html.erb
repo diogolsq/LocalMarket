@@ -19,18 +19,18 @@
 
 <%# rating average logic %>
 <% sum_of_ratings = 0 %>
-<% @product.review.each do |review| %>
+<% @product.reviews.each do |review| %>
   <% sum_of_ratings += review.rating %>
 <% end %>
-<% if @product.review.count == 0 %>
+<% if @product.reviews.count == 0 %>
   <p> This product has not been reviewed <p>
 <% else %>
-  <p>Average Rating: <%= "#{sum_of_ratings/@product.review.count} Reviews made: #{@product.review.count}" %></p>
+  <p>Average Rating: <%= "#{sum_of_ratings/@product.reviews.count} Reviews made: #{@product.reviews.count}" %></p>
 <% end %>
 <%# rating average logic end %>
 
 <% # listing reviews logic %>
-<% @product.review.each do |review| %>
+<% @product.reviews.each do |review| %>
   <% if review.description != "" %>
     <p><%= " #{review.description} #{review.rating} #{review.created_at} " %><p>
   <% end %>
