@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ]
 
   resources :orders_to_products, only: [:create, :update, :destroy]
-  resources :orders, only: [ :show ]
+  resources :orders, only: [ :show, :update ]
 
 end
