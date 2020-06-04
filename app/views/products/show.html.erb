@@ -7,9 +7,16 @@
       <%= cl_image_tag @product.photo.key, class: "product-image", crop: :fill if @product.photo.attached? %></div>
     <div class="product-info col-7">
       <%# link to seller's profile %>
-      <%= link_to "#{@user.name}", user_path(@user), class: "seller-link" %>
+      <p> Seller: <%= link_to "#{@user.name}", user_path(@user), class: "seller-link" %> </p>
       <h1 class="product-name"><%= @product.name%></h1>
+      <% if policy(@user).update? %>
+        <%= link_to edit_product_path(@product) do%>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      <% end %>
+      
       <%# rating average logic %>
+
       <% sum_of_ratings = 0 %>
       <% @product.reviews.each do |review| %>
         <% sum_of_ratings += review.rating %>

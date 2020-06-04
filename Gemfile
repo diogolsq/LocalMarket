@@ -72,3 +72,6 @@ gem 'pundit'
 
 # gem to discover the latitude and longitude based on the address atribute.
 gem 'geocoder'
+
+# help me do search querys and display the results
+gem 'pg_search', '~> 2.3.0'

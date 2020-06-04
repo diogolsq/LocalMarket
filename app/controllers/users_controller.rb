@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
     @markers = [{
       lat: @user.latitude,
-      lng: @user.longitude
+      lng: @user.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { user: @user }),
+      image_url: helpers.asset_url('logo.png')
     }]
   end
 
