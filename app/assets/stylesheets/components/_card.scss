@@ -7,9 +7,10 @@
 }
 
 .card-trip{
+
   border-radius:4px;
   width:240px;
-  border: 1px solid black;
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
 }
 
 // Smallest device
@@ -61,3 +62,15 @@
   background-color: black;
 }
 
+.card-trip-infos{
+
+}
+
+.card-trip-infos h2 {
+  font-size:16px;
+}
+
+
+.card-trip-infos p {
+  font-size:12px;
+}
