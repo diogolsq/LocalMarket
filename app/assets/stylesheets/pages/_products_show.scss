@@ -38,4 +38,29 @@
   font-size: 32px;
 }
 
+.add-cart-button {
+  background-color: $deep-yellow;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
 
+.add-cart-button:hover {
+  background-color: $light-yellow;
+}
+
+#orders_to_product_quantity {
+width: 100px;
+}
+
+.review-new {
+  background-color: $deep-yellow;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.review-new:hover {
+  background-color: $light-yellow;
+  }

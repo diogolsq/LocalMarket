@@ -30,7 +30,7 @@
 
 
             <% if product.photo.attached? %>
-              <%= cl_image_tag product.photo.key, height: 160, width: 240, crop: :fill, class: 'card-trip-img' if product.photo.attached? %>
+              <%= cl_image_tag product.photo.key, class: 'card-trip-img' if product.photo.attached? %>
             <% else %>
               <%= image_tag "logo.png", height: 160, width: 240, crop: :fill, class: 'empty card-trip-img' %>
 
@@ -39,7 +39,7 @@
             <div class="card-trip-infos">
               <div>
 
-                <h2><%= product.name.capitalize %></h2>
+                <h2 class="product-name"><%= product.name.capitalize%></h2>
                 <% white_stars = 5 - product.review.round %>
                 <p>
                   <% product.review.round.times do %>

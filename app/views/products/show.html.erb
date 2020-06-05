@@ -1,6 +1,6 @@
 
 
-<div class="product-show-container col-12 pt-30" style="background-color: white">
+<div class="product-show-container col-12 pt-100" style="background-color: white">
 
   <div class="product-details d-flex col-12">
     <div class="product-img col-5">
@@ -48,8 +48,8 @@
       <% # Add to cart logic and form %>
       <%= simple_form_for OrdersToProduct.new do |f| %>
         <%= f.input :product_id, as: :hidden, input_html: {value: @product.id} %>
-        <%= f.input :quantity, collection: (1..10), include_blank: false %>
-        <%= f.submit "Add to cart" %>
+        <%= f.input :quantity, collection: (1..10), include_blank: false, class: "quantity-button" %>
+        <%= f.submit "Add to cart", class: "add-cart-button" %>
       <% end %>
       <%# description %>
       <h3>Description:</h3>
@@ -81,7 +81,7 @@
     <div class="reviews-list col-9">
       <div class="reviews-title col-12"> <h2>Reviews:</h2> </div>
       <%# New Review %>
-      <%= link_to "New Review", new_product_review_path(@product.id) %>
+      <%= link_to "New Review", new_product_review_path(@product.id), class: "review-new" %>
          <% @product.reviews.each do |review| %>
               <% if review.description != "" %>
       <div class="card mb-4">
