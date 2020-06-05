@@ -5,7 +5,14 @@
   grid-gap: 16px;
   margin:8px;
 
+
 }
+
+
+.card-trip:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 .cards a {
   text-decoration: none;
 }
@@ -16,6 +23,7 @@
   width:240px;
   box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
   margin: auto;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 // Smallest device
@@ -71,7 +79,7 @@ object-fit: contain;
 }
 
 .card-trip-infos{
- background-color: #fff2f2;
+ background-color: #fcf7f7;
  border-radius: 0px 0px 4px 4px;
 }
 
