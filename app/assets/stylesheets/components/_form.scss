@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content:center;
   align-items: center;
-
+  background-image: url('https://source.unsplash.com/dq0x8AvNKv8/1600x1200');
+  background-repeat: no-repeat;
 }
 
 
@@ -15,6 +16,7 @@ border:1px solid rgb(150,150,150);
 border-radius:4px;
 width:50%;
 padding:4px;
+background-color:white;
 }
 
 
