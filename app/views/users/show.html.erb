@@ -110,7 +110,7 @@
   <h2>Your Purchases </h2>
   <hr>
   <% @orders.each do |order| %>
-    <p><%= order.status %><p>
+    <p><%= order.id %> : <%= order.status %><p>
   <% end %>
 <% end %>
 
@@ -118,13 +118,13 @@
 <% if @user.seller %>
   <% if current_user == @user %>
     <h2>Your Products </h2>
-    <%= link_to new_product_path(@user), class: "nav-link" do %>
-      <div class='btn btn-danger'> Add Products </div>
-    <% end %>
   <% else %>
     <h2>All products from this seller</h2>
   <% end %>
   <% @products.each do |product| %>
     <p><%= link_to "#{product.name}", product_path(product) %><p>
   <% end %>
+  <%= link_to new_product_path(@user), class: "nav-link" do %>
+      <div class='btn btn-danger'> Add Products </div>
+    <% end %>
 <% end %>
