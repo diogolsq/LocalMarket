@@ -2,13 +2,12 @@
 background-color:transparent!important;
 }
 
-.product-info {
-  background-color:white;
-  border-radius:4px;
-  box-shadow: 2px 2px 3pc rgba(0,0,0,0.3)
+
+
+.product-img{
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.product-img img{
-  box-shadow: 2px 2px 3pc rgba(0,0,0,0.3)
-
+.product-img:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
