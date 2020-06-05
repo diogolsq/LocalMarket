@@ -75,3 +75,6 @@ gem 'geocoder'
 
 # help me do search querys and display the results
 gem 'pg_search', '~> 2.3.0'
+
+# get better results with turbolink
+gem 'turbolinks_render'

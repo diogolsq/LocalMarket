@@ -24,7 +24,7 @@
                   <td>$ <%=  product.quantity  %></td>
                   <td>$ <%=  product.unit_price %></td>
                   <td> <% sum += (product.quantity) * (product.unit_price) %> $ <%=  (product.quantity) * (product.unit_price) %> <%= link_to orders_to_product_path(product),
-                  method: 'DELETE' do %>
+                  method: 'DELETE' , remote:true do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
                   </td>
