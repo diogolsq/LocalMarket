@@ -51,8 +51,10 @@ background-color:white;
   border-radius: 20px
 }
 
-
-.heading{
+.heading-rounded-sm {
+  border-radius: 130px 20px;
+  width: 300px;
+  border: 1px solid;
   padding: 1em;
   position: relative;
   color: #f7f7f7;
@@ -113,4 +115,10 @@ background-color:white;
 
 .tf .col {
   width: 20%;
+}
+
+h2{
+  margin-bottom: 0.5rem;
+  font-family: 'Heebo', sans-serif;
+  text-align: center;
 }
