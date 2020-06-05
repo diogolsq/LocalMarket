@@ -52,8 +52,8 @@
   }
 }
 
-.card-trip img {
-
+.card-trip-img {
+border-radius: 4px 4px 0px 0px;
 }
 
 .avatar-bordered {
@@ -67,10 +67,11 @@
 }
 
 .card-trip-infos{
-
+ background-color:#F2EFC7;
+ border-radius: 0px 0px 4px 4px;
 }
 
-.card-trip-infos h2 {
+.card-trip-infos  h2 {
   font-size:16px;
 }
 
