@@ -1,4 +1,5 @@
 .search-form-control {
+  height:60px;
   position: relative;
   bottom:40px;
   margin:8px;
@@ -13,7 +14,6 @@
 }
 
 .search-form-control .form-control {
-  // height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
 }
@@ -24,3 +24,6 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
+#query{
+  height:60px;
+}

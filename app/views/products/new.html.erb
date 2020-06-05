@@ -1,18 +1,16 @@
-<div class="fixing-margin">
-  <div class="form-centralize">
+<div class="form-centralize">
+  <div class="form-borders">
     <h2>Selling a new Product</h2>
-    <div class="form-borders">
-      <%= simple_form_for @product do |f| %>
-        <div class="input-color">
-          <%= f.input :name %>
-          <%= f.input :description %>
-          <%= f.input :stock %>
-          <%= f.input :price, hint: 'in dollars'%>
+    <%= simple_form_for @product do |f| %>
+      <div class="input-color">
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :stock %>
+        <%= f.input :price, hint: 'in dollars'%>
 
-          <%= f.input :photo, as: :file, hint: 'pick a good picture to display your product' %>
-          <%= f.submit class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    </div>
+        <%= f.input :photo, as: :file, hint: 'pick a good picture to display your product' %>
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -124,7 +124,7 @@
   <% @products.each do |product| %>
     <p><%= link_to "#{product.name}", product_path(product) %><p>
   <% end %>
-  <%= link_to new_product_path(@user), class: "nav-link" do %>
+  <%= link_to new_product_path(@user), class: "nav-link text-light" do %>
       <div class='btn btn-danger'> Add Products </div>
     <% end %>
 <% end %>
