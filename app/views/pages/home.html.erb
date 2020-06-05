@@ -38,8 +38,16 @@
 
             <div class="card-trip-infos">
               <div>
+
                 <h2><%= product.name.capitalize %></h2>
-                <p><%= product.review  %></p>
+                <% white_stars = 5 - product.review.round %>
+                <p>
+                  <% product.review.round.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% white_stars.times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
                 <!-- <p><%= product.description %> </p> -->
 
 
