@@ -4,7 +4,7 @@
 
   <div class="product-details d-flex col-12">
     <div class="product-img col-5">
-      <%= cl_image_tag @product.photo.key, class: "product-image", crop: :fill if @product.photo.attached? %></div>
+      <%= cl_image_tag @product.photo.key, class: "product-image rounded-lg", crop: :fill if @product.photo.attached? %></div>
     <div class="product-info col-7">
       <%# link to seller's profile %>
       <p> Seller: <%= link_to "#{@user.name}", user_path(@user), class: "seller-link" %> </p>
@@ -63,7 +63,7 @@
   <div class="reviews-container d-flex col-12">
     <div class="review-rating col-3">
       <%# rating average logic %>
-      <% if @product.reviews.count == 0 %>
+<!--       <% if @product.reviews.count == 0 %>
         <p> This product has not been reviewed <p>
       <% else %>
         <p>
@@ -75,7 +75,7 @@
           <% end %>
           <%= "(#{@product.reviews.count})" %>
         </p>
-      <% end %>
+      <% end %> -->
       <%# rating average logic end %>
     </div>
     <div class="reviews-list col-9">
