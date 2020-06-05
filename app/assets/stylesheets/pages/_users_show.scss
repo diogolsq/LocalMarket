@@ -18,12 +18,6 @@
   background-color: white;
 }
 
-.user-map {
-  height: 100%;
-  padding: 5px 5px;
-  background-color: white;
-}
-
 .user-info {
   padding-bottom: 55px;
 }
@@ -41,7 +35,7 @@
 }
 
 .user-properties {
-  height: 400px;
+  height: auto;
   background-color: white;
   margin-top: 5px;
   border-top: solid;
@@ -54,4 +48,26 @@
   justify-content: space-between;
 }
 
+.user-products {
+  margin: auto;
+
+}
+
+.products-cards {
+  border: solid;
+  border-radius: 5px;
+  padding: 10px 10px;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  height: 150px;
+}
+
+.product-image-user-show {
+  object-fit: contain;
+  height: 100%;
+}
+
+.product-card-photo {
+  text-align: center;
+}
 
