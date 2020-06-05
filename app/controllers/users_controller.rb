@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     authorize @user
     @orders = Order.where(user_id: @user.id)
     @products = Product.where(user_id: @user.id)
+    @purchased_orders = @orders.each { |order| order.status == "bought"}
 
     @markers = [{
       lat: @user.latitude,

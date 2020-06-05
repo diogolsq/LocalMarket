@@ -4,7 +4,7 @@
 
     <% if current_user == @user %>
      <div class="user-details col-12 d-flex align-items-center">
-        <div class="profile-avatar col-3">
+        <div class="profile-avatar col-3 style=" text-align: center;"">
 
           <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
           <%= image_tag "avatar-default-copy.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
@@ -33,98 +33,102 @@
       <% if current_user.seller %>
         <div class="user-properties col-12 d-flex">
           <div class="seller-recent-orders col-5">
-            <div></div>
-          </div>
-          <div class="user-products col-7">
-            <div class="card text-center">
+            <div class="card">
               <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                  </li>
-                </ul>
+                My Previous Purchases
               </div>
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                <% if current_user.orders != 0%>
+                  <% @purchased_orders.each do |purchased|%>
+                      <% counter = 1%>
+                      <div class="d-flex"><%= "Order #{counter} Purchased: #{purchased.updated_at}" %> <%= link_to "review purchase", order_path(purchased), class: "btn btn-light" %></div>
+
+                      <% counter += 1%>
+                  <% end %>
+                <% else %>
+                    <div> <h3>No previous orders</h3>  </div>
+                <% end %>
+
               </div>
             </div>
           </div>
+          <div class="user-products col-7">
+           <div class="card mb-4">
+              <h5 class="card-header d-flex" style="justify-content: space-between;"> <div>My Products </div> <div> <%= link_to "+ create", new_product_path, class: "btn btn-light" %></div></h5>
+              <div class="card-body">
+                <% current_user.products.each do |product|%>
+                  <div class="products-cards col-12 d-flex mb-3">
+                    <div class="product-card-photo col-4">
+                      <%= cl_image_tag product.photo.key, class: "product-image-user-show", crop: :fill if product.photo.attached? %>
+                    </div>
+                  <div class="product-card-information-edit col-8">
+                    <p><%= product.name %></p>
+                    <div class="d-flex">
+                      <%= link_to "Go to Product", product_path(product), class: "btn btn-light mr-2"%>
+
+                      <%= link_to "Edit Product", edit_product_path(product), class: "btn btn-light"%>
+                    </div>
+
+                  </div>
+                  </div>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
         </div>
-      <% else %>
-        <div class="user-recent-orders col-12"></div>
       <% end %>
 
     <% end %>
 
     <% if current_user != @user %>
     <div class="user-details col-12 d-flex align-items-center">
-      <div class="profile-avatar col-4">
-        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
-        <%= image_tag "Lewagonlogo.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
-      </div>
-      <div class="user-map col-8">
-        <div id="map"
-         style="width: 100%; height: 600px;"
-         data-markers="<%= @markers.to_json %>"
-         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      </div>
-      </div>
+        <div class="profile-avatar col-3" style=" text-align: center;">
+
+          <%= cl_image_tag @user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
+          <%= image_tag "avatar-default-copy.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
+          <div><h3><%= @user.name.capitalize %></h3></div>
+        </div>
+        <div class="user-info col-3">
+          <% if @user.seller %>
+            <h3>Seller's Profile</h3>
+          <% end %>
+          <p> Address: <%= @user.address %></p>
+          <p> Cellphone: <%= @user.cellphone %></p>
+
+        </div>
+        <div class="user-map col-6">
+          <div id="map"
+          style="width: 100%; height: 100%;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        </div>
+    </div>
+
+      <div class="user-properties col-12 d-flex">
+
+          <div class="user-products col-8">
+           <div class="card mb-4">
+              <h5 class="card-header d-flex" style="justify-content: space-between;"> <div>Other Products by this Seller </div></h5>
+              <div class="card-body">
+                <% @user.products.each do |product|%>
+                  <div class="products-cards col-12 d-flex mb-3">
+                    <div class="product-card-photo col-3">
+                      <%= cl_image_tag product.photo.key, class: "product-image-user-show" if product.photo.attached? %>
+                    </div>
+                  <div class="product-card-information-edit col-9">
+                    <h3><%= product.name %></h3>
+                    <%= link_to "Go to Product", product_path(product), class: "btn btn-light"%>
+                  </div>
+                  </div>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
     <% end %>
 
 </div>
-
-
-<%# display WELCOME BACK only if you are the owner of the page %>
-
-<%# display SELLER only if the user is a seller %>
-
-
-<%# user info with conditions %>
-<% if current_user == @user %>
-  <h1>Your Information</h1>
-  <%= link_to edit_user_registration_path, class: "nav-link" do %>
-    <i class="fas fa-user-edit"></i>
-  <% end %>
-<% else %>
-  <p> Seller Information <p>
-<% end %>
-
-<p> name : <%= @user.name %></p>
-<% if current_user == @user %>
-   <p> username :<%= @user.username %></p>
-   <p> cellphone: <%= @user.cellphone %></p>
-<% end %>
-<p> address: <%= @user.address %></p>
-<%# end user info with conditions logic %>
-
-<%# display your purchases logic %>
-<% if current_user == @user %>
-  <h2>Your Purchases </h2>
-  <hr>
-  <% @orders.each do |order| %>
-    <p><%= order.id %> : <%= order.status %><p>
-  <% end %>
-<% end %>
-
-<%# display sellers products logic %>
-<% if @user.seller %>
-  <% if current_user == @user %>
-    <h2>Your Products </h2>
-  <% else %>
-    <h2>All products from this seller</h2>
-  <% end %>
-  <% @products.each do |product| %>
-    <p><%= link_to "#{product.name}", product_path(product) %><p>
-  <% end %>
-  <%= link_to new_product_path(@user), class: "nav-link text-light" do %>
-      <div class='btn btn-danger'> Add Products </div>
-    <% end %>
-<% end %>
