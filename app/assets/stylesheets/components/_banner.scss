@@ -1,6 +1,7 @@
 .home-banner {
   background-image: url('https://source.unsplash.com/D6Tu_L3chLE/2000x1500');
   background-size: cover;
+  // filter: grayscale(40%);
   position:relative;
   bottom:80px;
   width:100%;
@@ -9,7 +10,54 @@
   color: #eee;
   text-align: center;
   padding-top: 40vh;
+<<<<<<< HEAD
   text-shadow: 2px 2px 3px rgba(0,0,0, 0.6);
   font-size: 60px;
+=======
+  text-shadow: 2px 2px 3px rgba(0,0,0, 0.8);
+>>>>>>> master
 }
 
+#banner-typed-text {
+
+text-shadow: 2px 2px 3px rgba(0,0,0, 0.8);
+}
+
+
+// sign-up/log in banner
+.header-separator {
+    height: 70px;
+}
+
+.background-container {
+   background-image: url("https://i.pinimg.com/originals/9e/ea/b0/9eeab0fb045184bde87504e12a564b50.jpg");
+   background-size: cover;
+   background-attachment: fixed;
+}
+
+.new-container {
+    height: 800px;
+    align-items: center;;
+}
+
+.new-container .new-form {
+    height: auto;
+    background-color: white;
+    padding: 30px 30px;
+    justify-content: center;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.new-img {
+    width: 50%;
+}
+
+.forgot-password {
+  text-decoration: none;
+  color: grey;
+}
+.forgot-password:hover {
+    text-decoration: none;
+    color: black;
+  }

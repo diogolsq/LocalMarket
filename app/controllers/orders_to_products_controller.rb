@@ -9,6 +9,9 @@ class OrdersToProductsController < ApplicationController
     authorize @orders_to_product
     @orders_to_product.save
 
+    # flash[:notice] = "Successfully added to cart. #{view_context.link_to 'wanna see your cart?', order_path(@orders_to_product.order_id)}".html_safe
+    # redirect_to @orders_to_product.product
+
     redirect_to @orders_to_product.product, notice: "Succesfully added to cart"
   end
 
@@ -16,6 +19,10 @@ class OrdersToProductsController < ApplicationController
   end
 
   def destroy
+    @product_in_order = OrdersToProduct.find(params[:id])
+    @product_in_order.destroy
+    redirect_to order_path(@product_in_order.order_id)
+    authorize @product_in_order
   end
 
   private
