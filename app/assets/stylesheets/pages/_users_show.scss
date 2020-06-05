@@ -18,5 +18,40 @@
   background-color: white;
 }
 
+.user-map {
+  height: 100%;
+  padding: 5px 5px;
+  background-color: white;
+}
+
+.user-info {
+  padding-bottom: 55px;
+}
+
+
+.user-info .nav-link {
+  text-align: end;
+  text-decoration: none;
+  color: lightgrey;
+}
+
+.user-info .nav-link:hover {
+  text-decoration: none;
+  color: darkgrey;
+}
+
+.user-properties {
+  height: 400px;
+  background-color: white;
+  margin-top: 5px;
+  border-top: solid;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  border-width: 1px;
+  padding-top: 30px;
+}
+.add-product {
+  background-color: rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
+}
 
 
