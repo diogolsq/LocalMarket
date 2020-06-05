@@ -24,6 +24,5 @@ class PagesController < ApplicationController
       end
       product.review = @productreview
     end
-
   end
 end
