@@ -1,38 +1,71 @@
-
-
 <div class="user-container col-12" style="background-color: white">
 
-  <div class="user-details col-12 d-flex align-items-center">
+
 
     <% if current_user == @user %>
-      <div class="profile-avatar col-3">
+     <div class="user-details col-12 d-flex align-items-center">
+        <div class="profile-avatar col-3">
 
-        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
-        <%= image_tag "avatar-default-copy.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
-        <dir><h3><%= @user.name.capitalize %></h3></dir>
-      </div>
-      <div class="user-info col-3">
-        <%= link_to edit_user_registration_path, class: "nav-link" do %>
-          <i class="fas fa-user-edit"></i>
-        <% end %>
-        <% if @user.seller %>
-          <h3>My Seller Profile</h3>
-        <% end %>
-        <p>Username: <%= @user.username %></p>
-        <p> Email: <%= @user.email %></p>
-        <p> Address: <%= @user.address %></p>
-        <p> Cellphone: <%= @user.cellphone %></p>
+          <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
+          <%= image_tag "avatar-default-copy.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
+          <div><h3><%= @user.name.capitalize %></h3></div>
+        </div>
+        <div class="user-info col-3">
+          <%= link_to edit_user_registration_path, class: "nav-link" do %>
+            <i class="fas fa-user-edit"></i>
+          <% end %>
+          <% if @user.seller %>
+            <h3>My Seller Profile</h3>
+          <% end %>
+          <p>Username: <%= @user.username %></p>
+          <p> Email: <%= @user.email %></p>
+          <p> Address: <%= @user.address %></p>
+          <p> Cellphone: <%= @user.cellphone %></p>
 
+        </div>
+        <div class="user-map col-6">
+          <div id="map"
+          style="width: 100%; height: 100%;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        </div>
       </div>
-      <div class="user-map col-6">
-        <div id="map"
-         style="width: 100%; height: 100%;"
-         data-markers="<%= @markers.to_json %>"
-         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      </div>
+      <% if current_user.seller %>
+        <div class="user-properties col-12 d-flex">
+          <div class="seller-recent-orders col-5">
+            <div></div>
+          </div>
+          <div class="user-products col-7">
+            <div class="card text-center">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="user-recent-orders col-12"></div>
+      <% end %>
+
     <% end %>
 
     <% if current_user != @user %>
+    <div class="user-details col-12 d-flex align-items-center">
       <div class="profile-avatar col-4">
         <%= cl_image_tag current_user.photo.key, crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached?%>
         <%= image_tag "Lewagonlogo.png", crop: :fill, class: "profile-pic", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false unless current_user.photo.attached?%>
@@ -43,24 +76,11 @@
          data-markers="<%= @markers.to_json %>"
          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       </div>
+      </div>
     <% end %>
-  </div>
+
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <%# display WELCOME BACK only if you are the owner of the page %>
 
