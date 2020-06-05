@@ -6,7 +6,7 @@
 </div>
 
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
+  <div class="search-form-control form-group" id='search-bar'>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
