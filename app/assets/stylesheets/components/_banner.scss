@@ -12,3 +12,32 @@
   text-shadow: 2px 2px 3px rgba(0,0,0, 0.6);
 }
 
+
+// sign-up/log in banner
+.header-separator {
+    height: 70px;
+}
+
+.background-container {
+   background-image: url("https://www.vegetarianventures.com/wp-content/uploads/2015/02/GinNJuiceLG34.jpg");
+   background-size: cover;
+   background-attachment: fixed;
+}
+
+.new-container {
+    height: 800px;
+    align-items: center;;
+}
+
+.new-container .new-form {
+    height: 300px;
+    background-color: white;
+    padding: 30px 30px;
+    justify-content: center;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.new-img {
+    width: 50%;
+}
