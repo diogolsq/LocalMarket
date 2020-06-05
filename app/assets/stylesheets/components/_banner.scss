@@ -19,7 +19,7 @@
 }
 
 .background-container {
-   background-image: url("https://www.vegetarianventures.com/wp-content/uploads/2015/02/GinNJuiceLG34.jpg");
+   background-image: url("https://i.pinimg.com/originals/9e/ea/b0/9eeab0fb045184bde87504e12a564b50.jpg");
    background-size: cover;
    background-attachment: fixed;
 }
@@ -30,7 +30,7 @@
 }
 
 .new-container .new-form {
-    height: 300px;
+    height: auto;
     background-color: white;
     padding: 30px 30px;
     justify-content: center;
@@ -41,3 +41,12 @@
 .new-img {
     width: 50%;
 }
+
+.forgot-password {
+  text-decoration: none;
+  color: grey;
+}
+.forgot-password:hover {
+    text-decoration: none;
+    color: black;
+  }
