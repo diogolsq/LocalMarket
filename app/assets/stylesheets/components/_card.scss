@@ -35,7 +35,7 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -55,6 +55,9 @@
 
 .card-trip-img {
 border-radius: 4px 4px 0px 0px;
+height: 200px;
+width: 100%;
+object-fit: contain;
 }
 
 .avatar-bordered {
@@ -68,7 +71,7 @@ border-radius: 4px 4px 0px 0px;
 }
 
 .card-trip-infos{
- background-color:#F2EFC7;
+ background-color: white;
  border-radius: 0px 0px 4px 4px;
 }
 
@@ -81,3 +84,13 @@ border-radius: 4px 4px 0px 0px;
   font-size:12px;
 }
 
+.card-trip-pricing {
+  color: $deep-yellow;
+  font-weight: bold;
+}
+
+.product-name {
+  margin-top: 3px;
+  color: $eerie-black;
+  font-weight: bold;
+}
